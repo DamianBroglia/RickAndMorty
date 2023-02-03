@@ -130,7 +130,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Form login={login} />}></Route>
         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />}></Route>
-        <Route path='/about' element={<About />}></Route>
+        <Route path='/about' element={<About />} ></Route>
         <Route path='/filtered' element={<Filtered filterChar={filterChar} onClose={onCloseTwo} />}></Route>
         <Route path='/favorites' element={<Favorites characters={characters} filterChar={filterChar} onClose={onClose} />}></Route>
         <Route path="/Detail/:detailid" element={<Detail />}></Route>
