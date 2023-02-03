@@ -1,0 +1,23 @@
+.search{
+    display:inline-flex;
+    margin-left: 370px;
+}
+
+.boton{
+    border-radius: 5px;
+   width: 70px;
+   height: 25px;
+   margin-left: 10px;
+   background: rgba(33, 188, 199, 0.6);
+   border: none;
+   color: white;
+}
+
+.boton:hover{
+    background: rgba(33, 188, 199, 1);
+    color: black;
+}
+.search2{
+    display:inline-flex;
+    
+}
