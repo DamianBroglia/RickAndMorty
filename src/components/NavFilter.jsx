@@ -13,9 +13,9 @@ export default function NavFilter({ filter, filterStatus, filterSpecies, filterG
             <Filter filter={filter} />
             <div className={styles.div}>
                 <p>Status:</p>
-                <select name="status"  onClick={(e) => {
+                <select name="status" onChange={(e) => {
                     setStatus(e.target.value)
-                    filterStatus(status)
+                    
 
                 }}>
                     <option value="" >All</option>
@@ -27,9 +27,8 @@ export default function NavFilter({ filter, filterStatus, filterSpecies, filterG
 
             <div className={styles.div}>
                 <p>Species:</p>
-                <select name="species"  onClick={(e) => {
+                <select name="species" onChange={(e) => {
                     setSpecies(e.target.value)
-                    filterSpecies(species)
                 }}>
                     <option value="" >All</option>
                     <option value="Human">Human</option>
@@ -45,10 +44,8 @@ export default function NavFilter({ filter, filterStatus, filterSpecies, filterG
             </div>
             <div className={styles.div}>
                 <p>Gender:</p>
-                <select name="gender"  onClick={(e) => {
+                <select name="gender" onChange={(e) => {
                     setGender(e.target.value)
-                    filterGender(gender)
-
                 }}>
                     <option value="" >All</option>
                     <option value="Male">Male</option>
@@ -57,6 +54,12 @@ export default function NavFilter({ filter, filterStatus, filterSpecies, filterG
                     <option value="Unknown">Unknown</option>
                 </select>
             </div>
+            <button className={styles.selecButton} onClick={(e) => {
+                e.preventDefault()
+                filterStatus(status)
+                filterSpecies(species)
+                filterGender(gender)
+            }}>Filter</button>
         </nav>
     )
 }
