@@ -9,7 +9,7 @@ import Detail from "./components/Detail.jsx"
 import Favorites from "./components/Favorites.jsx"
 import Filtered from "./components/Filtered"
 import NavFilter from "./components/NavFilter"
-
+import axios from 'axios';
 
 function App() {
   const navigate = useNavigate();
@@ -33,21 +33,23 @@ function App() {
   const [characters, setCharacters] = useState([])
   const location = useLocation()
 
-  function onSearch(id) {
-    fetch(`http://localhost:3001/onsearch/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.name) {
-          let exist = characters.find((e) => e.id === data.id);
-          if (exist) {
-            alert(`Ya tienes seleccionado a ${data.name}`)
-          } else {
-            setCharacters((oldChars) => [...oldChars, data]);
-          }
+  async function onSearch(id) {
+    try {
+      const result = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+      const character = result.data
+      if (character.name) {
+        let exist = characters.find((e) => e.id === character.id);
+        if (exist) {
+          alert(`Ya tienes seleccionado a ${character.name}`)
         } else {
-          window.alert('No hay personajes con ese ID');
+          setCharacters((oldChars) => [...oldChars, character]);
         }
-      });
+      } else {
+        window.alert('No hay personajes con ese ID');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   //----------------------------------------------------------------
@@ -132,7 +134,7 @@ function App() {
         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />}></Route>
         <Route path='/about' element={<About />} ></Route>
         <Route path='/filtered' element={<Filtered filterChar={filterChar} onClose={onCloseTwo} />}></Route>
-        <Route path='/favorites' element={<Favorites characters={characters} filterChar={filterChar} onClose={onClose} />}></Route>
+        <Route path='/favorites' element={<Favorites characters={characters} filterChar={filterChar} />}></Route>
         <Route path="/Detail/:detailid" element={<Detail />}></Route>
       </Routes>
     </div>

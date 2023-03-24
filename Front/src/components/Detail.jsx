@@ -6,9 +6,8 @@ import { useParams, Link } from "react-router-dom";
 export default function Detail() {
     const { detailid } = useParams();
     const [character, setCharacter] = useState({})
-
     useEffect(() => {
-        fetch(`http://localhost:3001/detail/${detailid}`)
+        fetch(`http://localhost:3001/rickandmorty/detail/${detailid}`)
             .then((response) => response.json())
             .then((char) => {
                 if (char.name) {

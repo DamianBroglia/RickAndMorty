@@ -7,6 +7,7 @@ export default function Cards({characters, onClose}) {
       <div className={styles.cards}>  
        {    characters.map (p => 
             <Card 
+            key = {p.id}
             id = {p.id}
             name={p.name}
             species={p.species}
