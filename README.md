@@ -46,6 +46,11 @@ Estas card se pueden:
    ```
 Ejecutar estos comandos posicionados a la altura del package.json tanto del front(client) como del back(api)
 
+Para ingresar a la app:
+
+- Username: DamianBroglia@gmail.com
+- Password: D@m14n.B 
+
 <br />
 
 ---
